@@ -1,0 +1,307 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 10px 12px;
+  background-color:rgb(245, 245, 245);
+}
+button{
+  cursor: pointer;
+}
+.tab > .container{
+    height: 80vh;
+}
+.tab.dash > .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/* Header */
+.tab-header {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 23px;
+}
+.tab-link {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #555;
+  transition: color 0.3s, border-bottom 0.3s;
+  position: relative;
+}
+
+.tab-link i {
+  margin-right: 8px;
+}
+
+.tab-link.active {
+  color: #ff6f61;
+  border-bottom: 3px solid #ff6f61;
+}
+
+.tab-link:hover {
+  color: #ff6f61;
+}
+.tab{
+  display: none;
+}
+.tab.show{
+  display: block;
+}
+.tab.dash .container .row{
+    height: 48%;
+}
+.tab.dash .container .col{
+  border-radius: 20px;
+  background-color: white;
+}
+.tab.dash .container .row{
+    display: flex;
+    justify-content: space-between;
+}
+.tab.dash .container .row .col.left {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.tab.dash .container .row .col.left .col-title {
+  margin: 0;
+  transform: translateY(-11px);
+  font-size: 18px;
+}
+.tab.dash .container .row .col.right {
+    width: 68%;
+    position: relative;
+}
+.tab.dash .container .row .col.right .date-select{
+    position: absolute;
+    top: 7px;
+    right: 12px;
+    border: none;
+    border-bottom:1px solid black ;
+    padding:initial 0 ;
+}
+.custom-date-dialog {
+  display: none;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.custom-date-dialog .row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.custom-date-dialog .submit-btn, .close-dialog {
+  background-color: none;
+  border: none;
+  padding: 8px 12px;
+}
+.custom-date-dialog .submit-btn{
+  background-color: #ff6f61;
+  color: white;
+}
+.custom-date-dialog .close-dialog{
+  color: #ff6f61;
+  border: 1px solid #ff6f61;
+}
+.tab.dash .container .row .col .container{
+  position: relative;
+}
+.circular-progress {
+    --progress: 0;
+    --size: 150px;
+    --half-size: calc(var(--size) / 2);
+    --stroke-width: 15px;
+    --radius: calc((var(--size) - var(--stroke-width)) / 2);
+    --circumference: calc(var(--radius) * 3.14 * 2);
+    --dash: calc((var(--progress) * var(--circumference)) / 100);
+  }
+
+.circular-progress + .percent-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  }
+.circular-progress + .percent-text p {
+    display: flex;
+  }
+.circular-progress + .percent-text .number {
+    font-size: 36px;
+  }
+.circular-progress + .percent-text .unit {
+    font-size: 30px;
+  }
+.circular-progress.humidity + .percent-text .unit {
+    font-size: 22px;
+  }
+
+  .circular-progress circle {
+    cx: var(--half-size);
+    cy: var(--half-size);
+    r: var(--radius);
+    stroke-width: var(--stroke-width);
+    fill: none;
+    stroke-linecap: round;
+  }
+  
+  .circular-progress circle.bg {
+    stroke: #ddd;
+  }
+  
+  .circular-progress circle.fg {
+    transform: rotate(-90deg);
+    transform-origin: var(--half-size) var(--half-size);
+    stroke-dasharray: var(--dash) calc(var(--circumference) - var(--dash));
+    transition: stroke-dasharray 0.7s linear 0s,
+                stroke .6s;
+    stroke: url(#blue);
+  }
+
+  /* Alarms tab */
+  .tab.alarms button.create-alarm-btn{
+    background-color: none;
+    border: none;
+    padding: 15px 24px;
+    background-color: #ff6f61;
+    color: white;
+  }
+  .tab.alarms button.create-alarm-btn + p{
+    margin-bottom: 1.5rem;
+  }
+  .tab.alarms .alarm-form-container form{
+    display: none;
+  }
+  .tab.alarms .alarm-form-container form .row{
+    margin-bottom: 1rem;
+  }
+  .tab.alarms .alarm-form-container form .form-error{
+    display: none;
+    color: red;
+    margin-bottom: 30px;
+  }
+  .tab.alarms .alarm-form-container form .row input[type="text"],[type="number"]{
+    background-color: white;
+    padding: 10px 5px;
+    border: 1px solid #ff6f61;
+    outline: none;
+  }
+  .tab.alarms .alarm-form-container form button.submit-btn, .close-btn{
+    padding: 8px 24px;
+    border: none;
+  }
+  .tab.alarms .alarm-form-container form button.submit-btn{
+    background-color: rgb(0, 162, 255);
+    padding: 15px 24px;
+    border: none;
+    color: white;
+  }
+  .tab.alarms .alarm-form-container form button.submit-btn, .close-btn{
+    background-color: none;
+    padding: 15px 24px;
+    border: 1px solid rgb(0, 162, 255);
+  }
+  .tab.alarms .alarms-list{
+    margin-top: 2.5rem;
+  }
+  .tab.alarms .alarms-list .list{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .card {
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+}
+.card button {
+    margin-top: 5px;
+    padding: 8px 20px;
+    border: none;
+    outline: none;
+    background-color: none;
+    margin-right: 5px;
+}
+.card button#editAlert {
+    background-color: green;
+    color: white;
+}
+.card button#deleteAlert {
+    background-color: red;
+    color: white;
+}
+.card .second-text{
+  color: rgb(97, 97, 97);
+}
+.card .first-text{
+  font-weight: bold;
+}
+/* Toggle switch */
+.card .switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 24px;
+}
+
+.card .switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.card .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.card .slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.card input:checked + .slider {
+  background-color: #2196F3;
+}
+
+.card input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+.card input:checked + .slider:before {
+  -webkit-transform: translateX(16px);
+  -ms-transform: translateX(16px);
+  transform: translateX(16px);
+}
+
+/* Rounded sliders */
+.card .slider.round {
+  border-radius: 34px;
+}
+
+.card .slider.round:before {
+  border-radius: 50%;
+}
